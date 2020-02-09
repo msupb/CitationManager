@@ -13,6 +13,7 @@ namespace Reference.Builder.Core
         public List<Author> authors { get; set; }
         public string title { get; set; }
         public string year { get; set; }
+        public string doi { get; set; }
         public Publisher publisher { get; set; }
         public Journal journal { get; set; }
         public CitationType type { get; set; }

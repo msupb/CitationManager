@@ -19,6 +19,8 @@ namespace Reference.Builder.Core.Citations
             {
                 if(details.type == CitationType.Book)
                     return new APACitation(details.authors, details.title, details.year, details.publisher, details.style, details.type);
+                if(details.type == CitationType.Book)
+                    return new APACitation(details.authors, details.title, details.year, details.style, details.type, details.journal, details.doi);
             }
                 
             return null;
