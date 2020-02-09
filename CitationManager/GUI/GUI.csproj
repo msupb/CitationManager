@@ -71,7 +71,6 @@
     <Compile Include="CitationForm.Designer.cs">
       <DependentUpon>CitationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommandType.cs" />
     <Compile Include="Installer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

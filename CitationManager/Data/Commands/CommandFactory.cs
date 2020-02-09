@@ -12,11 +12,28 @@ namespace Data.Commands
 {
     public class Commandfactory : ICommandFactory
     {
-        //Fix stuff in here
-        public void ExecuteCommand(CommandType type)
+        private IObjectRepository<CitationModel> objectRepository;
+        private ICitationModelMapper mapper;
+
+        public Commandfactory(IObjectRepository<CitationModel> objectRepository, ICitationModelMapper mapper)
         {
-            throw new NotImplementedException();
+            this.objectRepository = objectRepository;
+            this.mapper = mapper;
         }
+
+        public void Add(Citation citation)
+        {
+            AddCitationCommand addCommand = new AddCitationCommand(objectRepository, new CitationModel(), mapper);
+            addCommand.Add(citation);
+        }
+
+        public IEnumerable<CitationModel> GetCitations()
+        {
+            GetCitationsCommand getCommand = new GetCitationsCommand(objectRepository);
+            return getCommand.GetCitations();
+        }
+
+        //TODO: Add support for update, delete and get operations
     }
 
 

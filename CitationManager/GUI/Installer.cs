@@ -24,12 +24,8 @@ namespace GUI
             container.Register(Component.For<IObjectRepository<CitationModel>>().ImplementedBy<CitationObjectRepository<CitationModel>>()
                 .DependsOn(Property.ForKey<CitationContext>().Eq(new CitationContext())));
 
-            container.Register(Component.For<ICommand>().ImplementedBy<AddCitationCommand>()
+            container.Register(Component.For<ICommandFactory>().ImplementedBy<Commandfactory>()
                 .DependsOn(Property.ForKey<ICitationModelMapper>().Eq(container.Resolve<ICitationModelMapper>()))
-                .DependsOn(Property.ForKey<CitationModel>().Eq(new CitationModel()))
-                .DependsOn(Property.ForKey<IObjectRepository<CitationModel>>().Eq(container.Resolve<IObjectRepository<CitationModel>>())));
-
-            container.Register(Component.For<ICommand>().ImplementedBy<GetCitationsCommand>()
                 .DependsOn(Property.ForKey<IObjectRepository<CitationModel>>().Eq(container.Resolve<IObjectRepository<CitationModel>>())));
         }
     }

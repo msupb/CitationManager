@@ -22,15 +22,15 @@ namespace GUI
         ICitationFactory citationFactory;
         IObjectRepository<CitationModel> repository;
         ICitationModelMapper mapper;
-        ICommand command;     
+        ICommandFactory commandFactory;     
 
-        public frmCitationForm(IObjectRepository<CitationModel> repository, ICitationModelMapper mapper, CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommand command)
+        public frmCitationForm(IObjectRepository<CitationModel> repository, ICitationModelMapper mapper, CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommandFactory commandFactory)
         {
             this.citationFactory = citationFactory;
             this.citationDetails = citationDetails;
             this.repository = repository;
             this.mapper = mapper;
-            this.command = command;
+            this.commandFactory = commandFactory;
 
             InitializeComponent();
             cbStyle.DataSource = Enum.GetValues(typeof(CitationStyle));
@@ -40,9 +40,7 @@ namespace GUI
 
         private void LoadContent()
         {
-            GetCitationsCommand getCitations = new GetCitationsCommand(repository as CitationObjectRepository<CitationModel>);
-            IEnumerable<CitationModel> citationList = getCitations.GetCitations();
-            citationList.ToList();
+            IEnumerable<CitationModel> citationList = commandFactory.GetCitations();
 
             foreach (CitationModel item in citationList)
                 lstCitations.Items.Add(item.CitationString);          
@@ -61,8 +59,8 @@ namespace GUI
             citationDetails.style = style;
             citationDetails.type = type;
 
-            Citation c = citationFactory.CreateCitation(citationDetails);
-            (command as AddCitationCommand).Add(c);
+            Citation citation = citationFactory.CreateCitation(citationDetails);
+            commandFactory.Add(citation);
 
             LoadContent();
         }

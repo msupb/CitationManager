@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Commands
 {
-    public class GetCitationCommand : ICommand
+    public class GetCitationCommand
     {
         private CitationObjectRepository<CitationModel> _objectRepository;
         private int _id;

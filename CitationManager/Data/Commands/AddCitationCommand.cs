@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Commands
 {
-    public class AddCitationCommand : IAddCommand, ICommand
+    public class AddCitationCommand
     {
         private IObjectRepository<CitationModel> objectRepository;
         private CitationModel citationModel;

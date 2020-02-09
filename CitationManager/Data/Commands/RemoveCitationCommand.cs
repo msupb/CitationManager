@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Commands
 {
-    public class RemoveCitationCommand : ICommand
+    public class RemoveCitationCommand
     {
         private CitationObjectRepository<CitationModel> objectRepository;
         private int id;

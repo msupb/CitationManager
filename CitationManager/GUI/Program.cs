@@ -26,11 +26,11 @@ namespace GUI
             ICitationFactory citationFactory = container.Resolve<ICitationFactory>();
             ICitationModelMapper mapper = container.Resolve<ICitationModelMapper>();
             IObjectRepository<CitationModel> repository = container.Resolve<IObjectRepository<CitationModel>>();
-            ICommand command = container.Resolve<ICommand>();
+            ICommandFactory commandFactory = container.Resolve<ICommandFactory>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCitationForm(repository, mapper, new CitationDetailsObject(), citationFactory, command));
+            Application.Run(new frmCitationForm(repository, mapper, new CitationDetailsObject(), citationFactory, commandFactory));
         }
     }
 }

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Data.Commands
 {
-    public class GetCitationsCommand : IGetCitationsCommand, ICommand
+    public class GetCitationsCommand
     {
-        private readonly CitationObjectRepository<CitationModel> objectRepository;
-        public GetCitationsCommand(CitationObjectRepository<CitationModel> objectRepository)
+        private readonly IObjectRepository<CitationModel> objectRepository;
+        public GetCitationsCommand(IObjectRepository<CitationModel> objectRepository)
         {
             this.objectRepository = objectRepository;
         }

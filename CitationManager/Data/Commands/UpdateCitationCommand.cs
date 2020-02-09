@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace Data.Commands
 {
-    public class UpdateCitationCommand : ICommand
+    public class UpdateCitationCommand
     {
         private CitationObjectRepository<CitationModel> objectRepository;
         private CitationModel citation;
+        private readonly object updateLock = new object();
 
         public UpdateCitationCommand(CitationObjectRepository<CitationModel> objectRepository, CitationModel citation)
         {
@@ -22,7 +23,10 @@ namespace Data.Commands
 
         public void Execute()
         {
-            objectRepository.Update(citation);
+            lock (updateLock)
+            {
+                objectRepository.Update(citation);
+            }        
         }
     }
 }

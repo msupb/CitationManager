@@ -59,10 +59,7 @@
     <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\GetCitationCommand.cs" />
     <Compile Include="Commands\GetCitationsCommand.cs" />
-    <Compile Include="Commands\IAddCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandFactory.cs" />
-    <Compile Include="Commands\IGetCitationsCommand.cs" />
     <Compile Include="Commands\RemoveCitationCommand.cs" />
     <Compile Include="Commands\UpdateCitationCommand.cs" />
     <Compile Include="Context\CitationContext.cs" />
