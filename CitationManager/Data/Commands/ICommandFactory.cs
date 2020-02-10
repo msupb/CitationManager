@@ -14,5 +14,6 @@ namespace Data.Commands
     {
         IEnumerable<CitationModel> GetCitations();
         void Add(Citation citation);
+        void Delete(int id);
     }
 }

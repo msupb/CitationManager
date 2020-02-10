@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -45,6 +46,9 @@
             this.btGenerate = new System.Windows.Forms.Button();
             this.lstCitations = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -182,11 +186,26 @@
             this.lstCitations.TabIndex = 18;
             this.lstCitations.UseCompatibleStateImageBehavior = false;
             this.lstCitations.View = System.Windows.Forms.View.Details;
+            this.lstCitations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListViewClick);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Citation";
             this.columnHeader1.Width = 500;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(181, 48);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmCitationForm
             // 
@@ -211,6 +230,7 @@
             this.Controls.Add(this.lblFirstName);
             this.Name = "frmCitationForm";
             this.Text = "Citation manager";
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +255,7 @@
         private System.Windows.Forms.Button btGenerate;
         private System.Windows.Forms.ListView lstCitations;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

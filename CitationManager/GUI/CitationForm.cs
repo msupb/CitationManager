@@ -38,12 +38,14 @@ namespace GUI
             LoadContent();
         }
 
+        #region Private methods
+
         private void LoadContent()
         {
             IEnumerable<CitationModel> citationList = commandFactory.GetCitations();
 
             foreach (CitationModel item in citationList)
-                lstCitations.Items.Add(item.CitationString);          
+                lstCitations.Items.Add(item.CitationString, item.Id);          
         }
 
         private void UpdateContent()
@@ -65,9 +67,40 @@ namespace GUI
             LoadContent();
         }
 
+        #endregion
+
+        #region Event handlers
+
         private void Generate(object sender, EventArgs e)
         {
             UpdateContent();
         }
+
+        private void ListViewClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                if(lstCitations.FocusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenu.Show(Cursor.Position);
+                }
+            }
+        }
+
+        #endregion
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteCitation();
+        }
+
+        private void DeleteCitation()
+        {
+            lstCitations.LabelEdit = true;
+            commandFactory.Delete(lstCitations.Items[lstCitations.SelectedIndices[0]].ImageIndex);
+            lstCitations.Items.RemoveAt(lstCitations.SelectedIndices[0]);
+            
+        }
+       
     }
 }

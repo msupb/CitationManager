@@ -33,7 +33,12 @@ namespace Data.Commands
             return getCommand.GetCitations();
         }
 
-        //TODO: Add support for update, delete and get operations
+        public void Delete(int id)
+        {
+            RemoveCitationCommand removeCommand = new RemoveCitationCommand(objectRepository, id);
+            removeCommand.Execute();
+        }
+        //TODO: Add support for more operations
     }
 
 
