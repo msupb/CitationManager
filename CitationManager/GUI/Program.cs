@@ -24,13 +24,11 @@ namespace GUI
             WindsorContainer container = new WindsorContainer();
             container.Install(new Installer());
             ICitationFactory citationFactory = container.Resolve<ICitationFactory>();
-            ICitationModelMapper mapper = container.Resolve<ICitationModelMapper>();
-            IObjectRepository<CitationModel> repository = container.Resolve<IObjectRepository<CitationModel>>();
             ICommandFactory commandFactory = container.Resolve<ICommandFactory>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCitationForm(repository, mapper, new CitationDetailsObject(), citationFactory, commandFactory));
+            Application.Run(new frmCitationForm(new CitationDetailsObject(), citationFactory, commandFactory));
         }
     }
 }

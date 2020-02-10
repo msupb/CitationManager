@@ -20,21 +20,15 @@ namespace GUI
     {
         CitationDetailsObject citationDetails;
         ICitationFactory citationFactory;
-        IObjectRepository<CitationModel> repository;
-        ICitationModelMapper mapper;
         ICommandFactory commandFactory;     
 
-        public frmCitationForm(IObjectRepository<CitationModel> repository, ICitationModelMapper mapper, CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommandFactory commandFactory)
+        public frmCitationForm(CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommandFactory commandFactory)
         {
             this.citationFactory = citationFactory;
             this.citationDetails = citationDetails;
-            this.repository = repository;
-            this.mapper = mapper;
             this.commandFactory = commandFactory;
 
             InitializeComponent();
-            cbStyle.DataSource = Enum.GetValues(typeof(CitationStyle));
-            cbType.DataSource = Enum.GetValues(typeof(CitationType));
             LoadContent();
         }
 
@@ -42,39 +36,24 @@ namespace GUI
 
         private void LoadContent()
         {
+            lstCitations.Items.Clear();
             IEnumerable<CitationModel> citationList = commandFactory.GetCitations();
 
             foreach (CitationModel item in citationList)
                 lstCitations.Items.Add(item.CitationString, item.Id);          
         }
 
-        private void UpdateContent()
+        private void DeleteCitation()
         {
-            CitationStyle style = (CitationStyle)cbStyle.SelectedItem;
-            CitationType type = (CitationType)cbType.SelectedItem;
-            List<Author> authors = new List<Author>();
-            authors.Add(new Author(tbFirstName.Text, tbLastName.Text));
-            citationDetails.title = tbTitle.Text;
-            citationDetails.authors = authors;
-            citationDetails.year = tbYear.Text;
-            citationDetails.publisher = new Publisher(tbPublisher.Text);
-            citationDetails.style = style;
-            citationDetails.type = type;
+            lstCitations.LabelEdit = true;
+            commandFactory.Delete(lstCitations.Items[lstCitations.SelectedIndices[0]].ImageIndex);
+            lstCitations.Items.RemoveAt(lstCitations.SelectedIndices[0]);
 
-            Citation citation = citationFactory.CreateCitation(citationDetails);
-            commandFactory.Add(citation);
-
-            LoadContent();
         }
 
         #endregion
 
         #region Event handlers
-
-        private void Generate(object sender, EventArgs e)
-        {
-            UpdateContent();
-        }
 
         private void ListViewClick(object sender, MouseEventArgs e)
         {
@@ -87,20 +66,23 @@ namespace GUI
             }
         }
 
-        #endregion
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ContextMenuDeleteAction(object sender, EventArgs e)
         {
             DeleteCitation();
         }
 
-        private void DeleteCitation()
+        private void AddCitationForm(object sender, EventArgs e)
         {
-            lstCitations.LabelEdit = true;
-            commandFactory.Delete(lstCitations.Items[lstCitations.SelectedIndices[0]].ImageIndex);
-            lstCitations.Items.RemoveAt(lstCitations.SelectedIndices[0]);
-            
+            ManageCitationForm manageCitationForm = new ManageCitationForm(commandFactory, citationDetails, citationFactory);
+            manageCitationForm.FormClosing += new FormClosingEventHandler(this.AddCitationFormClosing);
+            manageCitationForm.Show();
         }
-       
+
+        private void AddCitationFormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadContent();
+        }
+
+        #endregion
     }
 }

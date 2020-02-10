@@ -72,10 +72,19 @@
       <DependentUpon>CitationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Installer.cs" />
+    <Compile Include="ManageCitationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCitationForm.Designer.cs">
+      <DependentUpon>ManageCitationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CitationForm.resx">
       <DependentUpon>CitationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageCitationForm.resx">
+      <DependentUpon>ManageCitationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
