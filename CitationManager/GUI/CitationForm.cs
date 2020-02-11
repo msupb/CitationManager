@@ -37,7 +37,7 @@ namespace GUI
         private void LoadContent()
         {
             lstCitations.Items.Clear();
-            IEnumerable<CitationModel> citationList = commandFactory.GetCitations();
+            IEnumerable<CitationModel> citationList = commandFactory.Execute();
 
             foreach (CitationModel item in citationList)
             {
@@ -50,7 +50,7 @@ namespace GUI
         private void DeleteCitation()
         {
             lstCitations.LabelEdit = true;
-            commandFactory.Delete((int)lstCitations.Items[lstCitations.SelectedIndices[0]].Tag);
+            commandFactory.Execute((int)lstCitations.Items[lstCitations.SelectedIndices[0]].Tag);
             lstCitations.Items.RemoveAt(lstCitations.SelectedIndices[0]);
         }
 

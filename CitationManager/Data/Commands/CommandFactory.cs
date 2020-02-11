@@ -21,19 +21,19 @@ namespace Data.Commands
             this.mapper = mapper;
         }
 
-        public void Add(Citation citation)
+        public void Execute(Citation citation)
         {
             AddCitationCommand addCommand = new AddCitationCommand(objectRepository, new CitationModel(), mapper);
             addCommand.Add(citation);
         }
 
-        public IEnumerable<CitationModel> GetCitations()
+        public IEnumerable<CitationModel> Execute()
         {
             GetCitationsCommand getCommand = new GetCitationsCommand(objectRepository);
             return getCommand.GetCitations();
         }
 
-        public void Delete(int id)
+        public void Execute(int id)
         {
             RemoveCitationCommand removeCommand = new RemoveCitationCommand(objectRepository, id);
             removeCommand.Execute();

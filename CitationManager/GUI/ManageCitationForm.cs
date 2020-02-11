@@ -43,7 +43,7 @@ namespace GUI
             citationDetails.type = type;
 
             Citation citation = citationFactory.CreateCitation(citationDetails);
-            commandFactory.Add(citation);
+            commandFactory.Execute(citation);
 
             this.Close();
             //LoadContent();

@@ -12,8 +12,8 @@ namespace Data.Commands
 {
     public interface ICommandFactory
     {
-        IEnumerable<CitationModel> GetCitations();
-        void Add(Citation citation);
-        void Delete(int id);
+        IEnumerable<CitationModel> Execute();
+        void Execute(Citation citation);
+        void Execute(int id);
     }
 }
