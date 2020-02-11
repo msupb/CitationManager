@@ -40,15 +40,18 @@ namespace GUI
             IEnumerable<CitationModel> citationList = commandFactory.GetCitations();
 
             foreach (CitationModel item in citationList)
-                lstCitations.Items.Add(item.CitationString, item.Id);          
+            {
+                ListViewItem listItem = new ListViewItem(item.CitationString);
+                listItem.Tag = item.Id;
+                lstCitations.Items.Add(listItem);
+            }                  
         }
 
         private void DeleteCitation()
         {
             lstCitations.LabelEdit = true;
-            commandFactory.Delete(lstCitations.Items[lstCitations.SelectedIndices[0]].ImageIndex);
+            commandFactory.Delete((int)lstCitations.Items[lstCitations.SelectedIndices[0]].Tag);
             lstCitations.Items.RemoveAt(lstCitations.SelectedIndices[0]);
-
         }
 
         #endregion
