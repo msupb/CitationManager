@@ -94,7 +94,10 @@ namespace GUI
 
         private void Export(object sender, EventArgs e)
         {
-            xlsExporter.Export(lstCitations);
+            if(xlsExporter.Export(lstCitations))
+                MessageBox.Show("Citation list successfully exported.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else 
+                MessageBox.Show("Something went wrong", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion

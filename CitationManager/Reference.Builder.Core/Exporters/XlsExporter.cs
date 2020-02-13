@@ -15,7 +15,7 @@ namespace Reference.Builder.Core.Exporters
 
         }
 
-        public void Export(ListView itemList)
+        public bool Export(ListView itemList)
         {
             // Refactor this
             using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook| * .xls", ValidateNames = true })
@@ -36,7 +36,11 @@ namespace Reference.Builder.Core.Exporters
 
                     wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
                     app.Quit();
-                    MessageBox.Show("Citation list successfully exported.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
