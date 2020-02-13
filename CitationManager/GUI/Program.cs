@@ -5,6 +5,7 @@ using Data.Models;
 using Data.Repository;
 using Reference.Builder.Core;
 using Reference.Builder.Core.Citations;
+using Reference.Builder.Core.Exporters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,11 @@ namespace GUI
             container.Install(new Installer());
             ICitationFactory citationFactory = container.Resolve<ICitationFactory>();
             ICommandFactory commandFactory = container.Resolve<ICommandFactory>();
+            IExporter xlsExporter = container.Resolve<IExporter>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCitationForm(new CitationDetailsObject(), citationFactory, commandFactory));
+            Application.Run(new frmCitationForm(new CitationDetailsObject(), citationFactory, commandFactory, xlsExporter));
         }
     }
 }

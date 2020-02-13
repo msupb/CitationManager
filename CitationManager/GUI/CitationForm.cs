@@ -1,8 +1,10 @@
 ﻿using Data.Commands;
 using Data.Models;
 using Data.Repository;
+using Microsoft.Office.Interop.Excel;
 using Reference.Builder.Core;
 using Reference.Builder.Core.Citations;
+using Reference.Builder.Core.Exporters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,15 +20,17 @@ namespace GUI
 {
     public partial class frmCitationForm : Form
     {
-        CitationDetailsObject citationDetails;
-        ICitationFactory citationFactory;
-        ICommandFactory commandFactory;     
+        readonly CitationDetailsObject citationDetails;
+        readonly ICitationFactory citationFactory;
+        readonly ICommandFactory commandFactory;
+        readonly IExporter xlsExporter;
 
-        public frmCitationForm(CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommandFactory commandFactory)
+        public frmCitationForm(CitationDetailsObject citationDetails, ICitationFactory citationFactory, ICommandFactory commandFactory, IExporter xlsExporter)
         {
             this.citationFactory = citationFactory;
             this.citationDetails = citationDetails;
             this.commandFactory = commandFactory;
+            this.xlsExporter = xlsExporter;
 
             InitializeComponent();
             LoadContent();
@@ -41,8 +45,10 @@ namespace GUI
 
             foreach (CitationModel item in citationList)
             {
-                ListViewItem listItem = new ListViewItem(item.CitationString);
-                listItem.Tag = item.Id;
+                ListViewItem listItem = new ListViewItem(item.CitationString)
+                {
+                    Tag = item.Id
+                };
                 lstCitations.Items.Add(listItem);
             }                  
         }
@@ -84,6 +90,11 @@ namespace GUI
         private void AddCitationFormClosing(object sender, FormClosingEventArgs e)
         {
             LoadContent();
+        }
+
+        private void Export(object sender, EventArgs e)
+        {
+            xlsExporter.Export(lstCitations);
         }
 
         #endregion

@@ -34,6 +34,7 @@
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btAddCitation = new System.Windows.Forms.Button();
+            this.btExport = new System.Windows.Forms.Button();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,11 +80,22 @@
             this.btAddCitation.UseVisualStyleBackColor = true;
             this.btAddCitation.Click += new System.EventHandler(this.AddCitationForm);
             // 
+            // btExport
+            // 
+            this.btExport.Location = new System.Drawing.Point(12, 41);
+            this.btExport.Name = "btExport";
+            this.btExport.Size = new System.Drawing.Size(75, 23);
+            this.btExport.TabIndex = 20;
+            this.btExport.Text = "Export";
+            this.btExport.UseVisualStyleBackColor = true;
+            this.btExport.Click += new System.EventHandler(this.Export);
+            // 
             // frmCitationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 552);
+            this.Controls.Add(this.btExport);
             this.Controls.Add(this.btAddCitation);
             this.Controls.Add(this.lstCitations);
             this.Name = "frmCitationForm";
@@ -99,5 +111,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Button btAddCitation;
+        private System.Windows.Forms.Button btExport;
     }
 }
