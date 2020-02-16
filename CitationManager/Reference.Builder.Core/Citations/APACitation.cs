@@ -33,6 +33,7 @@ namespace Reference.Builder.Core.Citations
 
         private string InternalBookCitation()
         {
+            sb.Clear();
             FormatAuthorNames(authors);
             sb.Append($"({year}).{whiteSpace}");
             sb.Append($"{title}.{whiteSpace}");
@@ -42,6 +43,7 @@ namespace Reference.Builder.Core.Citations
 
         private string InternalArticleCitation()
         {
+            sb.Clear();
             FormatAuthorNames(authors);
             sb.Append($"({year}).{whiteSpace}");
             sb.Append($"{title}.{whiteSpace}");

@@ -32,8 +32,6 @@
             this.tbPublisher = new System.Windows.Forms.TextBox();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.tbLastName = new System.Windows.Forms.TextBox();
-            this.tbFirstName = new System.Windows.Forms.TextBox();
             this.lblStyle = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.cbStyle = new System.Windows.Forms.ComboBox();
@@ -43,11 +41,32 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
+            this.tbJournal = new System.Windows.Forms.TextBox();
+            this.lblJournal = new System.Windows.Forms.Label();
+            this.lblDoi = new System.Windows.Forms.Label();
+            this.tbDoi = new System.Windows.Forms.TextBox();
+            this.pnFirstName = new System.Windows.Forms.Panel();
+            this.btAddAuthor = new System.Windows.Forms.Button();
+            this.pnLastName = new System.Windows.Forms.Panel();
+            this.grpAuthors = new System.Windows.Forms.GroupBox();
+            this.grpDetails = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.grpAuthors.SuspendLayout();
+            this.grpDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // btGenerate
             // 
-            this.btGenerate.Location = new System.Drawing.Point(470, 167);
+            this.btGenerate.Location = new System.Drawing.Point(367, 34);
             this.btGenerate.Name = "btGenerate";
             this.btGenerate.Size = new System.Drawing.Size(75, 23);
             this.btGenerate.TabIndex = 32;
@@ -57,38 +76,24 @@
             // 
             // tbPublisher
             // 
-            this.tbPublisher.Location = new System.Drawing.Point(445, 89);
+            this.tbPublisher.Location = new System.Drawing.Point(220, 40);
             this.tbPublisher.Name = "tbPublisher";
             this.tbPublisher.Size = new System.Drawing.Size(100, 20);
             this.tbPublisher.TabIndex = 31;
             // 
             // tbYear
             // 
-            this.tbYear.Location = new System.Drawing.Point(339, 89);
+            this.tbYear.Location = new System.Drawing.Point(115, 40);
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(100, 20);
             this.tbYear.TabIndex = 30;
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(233, 89);
+            this.tbTitle.Location = new System.Drawing.Point(9, 40);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(100, 20);
             this.tbTitle.TabIndex = 29;
-            // 
-            // tbLastName
-            // 
-            this.tbLastName.Location = new System.Drawing.Point(127, 89);
-            this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(100, 20);
-            this.tbLastName.TabIndex = 28;
-            // 
-            // tbFirstName
-            // 
-            this.tbFirstName.Location = new System.Drawing.Point(21, 89);
-            this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(100, 20);
-            this.tbFirstName.TabIndex = 27;
             // 
             // lblStyle
             // 
@@ -110,6 +115,7 @@
             // 
             // cbStyle
             // 
+            this.cbStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStyle.FormattingEnabled = true;
             this.cbStyle.Location = new System.Drawing.Point(149, 35);
             this.cbStyle.Name = "cbStyle";
@@ -118,16 +124,18 @@
             // 
             // cbType
             // 
+            this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(22, 35);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(121, 21);
             this.cbType.TabIndex = 23;
+            this.cbType.SelectedValueChanged += new System.EventHandler(this.cbType_SelectedValueChanged);
             // 
             // lblPublisher
             // 
             this.lblPublisher.AutoSize = true;
-            this.lblPublisher.Location = new System.Drawing.Point(442, 73);
+            this.lblPublisher.Location = new System.Drawing.Point(217, 24);
             this.lblPublisher.Name = "lblPublisher";
             this.lblPublisher.Size = new System.Drawing.Size(50, 13);
             this.lblPublisher.TabIndex = 22;
@@ -136,7 +144,7 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(336, 73);
+            this.lblYear.Location = new System.Drawing.Point(112, 24);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(29, 13);
             this.lblYear.TabIndex = 21;
@@ -145,7 +153,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(230, 73);
+            this.lblTitle.Location = new System.Drawing.Point(6, 24);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(27, 13);
             this.lblTitle.TabIndex = 20;
@@ -154,7 +162,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(124, 73);
+            this.lblLastName.Location = new System.Drawing.Point(121, 24);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(56, 13);
             this.lblLastName.TabIndex = 19;
@@ -163,34 +171,209 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(18, 73);
+            this.lblFirstName.Location = new System.Drawing.Point(7, 24);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(55, 13);
             this.lblFirstName.TabIndex = 18;
             this.lblFirstName.Text = "First name";
             // 
+            // tbJournal
+            // 
+            this.tbJournal.Location = new System.Drawing.Point(220, 40);
+            this.tbJournal.Name = "tbJournal";
+            this.tbJournal.Size = new System.Drawing.Size(100, 20);
+            this.tbJournal.TabIndex = 34;
+            // 
+            // lblJournal
+            // 
+            this.lblJournal.AutoSize = true;
+            this.lblJournal.Location = new System.Drawing.Point(217, 24);
+            this.lblJournal.Name = "lblJournal";
+            this.lblJournal.Size = new System.Drawing.Size(41, 13);
+            this.lblJournal.TabIndex = 33;
+            this.lblJournal.Text = "Journal";
+            // 
+            // lblDoi
+            // 
+            this.lblDoi.AutoSize = true;
+            this.lblDoi.Location = new System.Drawing.Point(323, 24);
+            this.lblDoi.Name = "lblDoi";
+            this.lblDoi.Size = new System.Drawing.Size(23, 13);
+            this.lblDoi.TabIndex = 35;
+            this.lblDoi.Text = "Doi";
+            // 
+            // tbDoi
+            // 
+            this.tbDoi.Location = new System.Drawing.Point(326, 40);
+            this.tbDoi.Name = "tbDoi";
+            this.tbDoi.Size = new System.Drawing.Size(100, 20);
+            this.tbDoi.TabIndex = 36;
+            // 
+            // pnFirstName
+            // 
+            this.pnFirstName.Location = new System.Drawing.Point(9, 40);
+            this.pnFirstName.Name = "pnFirstName";
+            this.pnFirstName.Size = new System.Drawing.Size(108, 313);
+            this.pnFirstName.TabIndex = 37;
+            // 
+            // btAddAuthor
+            // 
+            this.btAddAuthor.Location = new System.Drawing.Point(286, 34);
+            this.btAddAuthor.Name = "btAddAuthor";
+            this.btAddAuthor.Size = new System.Drawing.Size(75, 23);
+            this.btAddAuthor.TabIndex = 38;
+            this.btAddAuthor.Text = "Add author";
+            this.btAddAuthor.UseVisualStyleBackColor = true;
+            this.btAddAuthor.Click += new System.EventHandler(this.btAddAuthor_Click);
+            // 
+            // pnLastName
+            // 
+            this.pnLastName.Location = new System.Drawing.Point(123, 40);
+            this.pnLastName.Name = "pnLastName";
+            this.pnLastName.Size = new System.Drawing.Size(108, 313);
+            this.pnLastName.TabIndex = 38;
+            // 
+            // grpAuthors
+            // 
+            this.grpAuthors.Controls.Add(this.pnLastName);
+            this.grpAuthors.Controls.Add(this.lblFirstName);
+            this.grpAuthors.Controls.Add(this.lblLastName);
+            this.grpAuthors.Controls.Add(this.pnFirstName);
+            this.grpAuthors.Location = new System.Drawing.Point(13, 73);
+            this.grpAuthors.Name = "grpAuthors";
+            this.grpAuthors.Size = new System.Drawing.Size(240, 368);
+            this.grpAuthors.TabIndex = 39;
+            this.grpAuthors.TabStop = false;
+            this.grpAuthors.Text = "Authors";
+            // 
+            // grpDetails
+            // 
+            this.grpDetails.Controls.Add(this.label1);
+            this.grpDetails.Controls.Add(this.lblTitle);
+            this.grpDetails.Controls.Add(this.textBox5);
+            this.grpDetails.Controls.Add(this.lblYear);
+            this.grpDetails.Controls.Add(this.lblPublisher);
+            this.grpDetails.Controls.Add(this.label5);
+            this.grpDetails.Controls.Add(this.label2);
+            this.grpDetails.Controls.Add(this.tbDoi);
+            this.grpDetails.Controls.Add(this.label3);
+            this.grpDetails.Controls.Add(this.textBox4);
+            this.grpDetails.Controls.Add(this.tbTitle);
+            this.grpDetails.Controls.Add(this.lblDoi);
+            this.grpDetails.Controls.Add(this.tbYear);
+            this.grpDetails.Controls.Add(this.label4);
+            this.grpDetails.Controls.Add(this.textBox1);
+            this.grpDetails.Controls.Add(this.tbJournal);
+            this.grpDetails.Controls.Add(this.tbPublisher);
+            this.grpDetails.Controls.Add(this.lblJournal);
+            this.grpDetails.Controls.Add(this.textBox2);
+            this.grpDetails.Controls.Add(this.textBox3);
+            this.grpDetails.Location = new System.Drawing.Point(259, 73);
+            this.grpDetails.Name = "grpDetails";
+            this.grpDetails.Size = new System.Drawing.Size(437, 368);
+            this.grpDetails.TabIndex = 40;
+            this.grpDetails.TabStop = false;
+            this.grpDetails.Text = "Citation details";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Title";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(112, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Year";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(217, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Publisher";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 29;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(115, 40);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 30;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(220, 40);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(217, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Journal";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(220, 40);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 34;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(323, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Doi";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(326, 40);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 36;
+            // 
             // ManageCitationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 237);
+            this.ClientSize = new System.Drawing.Size(711, 452);
+            this.Controls.Add(this.grpDetails);
+            this.Controls.Add(this.grpAuthors);
+            this.Controls.Add(this.btAddAuthor);
             this.Controls.Add(this.btGenerate);
-            this.Controls.Add(this.tbPublisher);
-            this.Controls.Add(this.tbYear);
-            this.Controls.Add(this.tbTitle);
-            this.Controls.Add(this.tbLastName);
-            this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lblStyle);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.cbStyle);
             this.Controls.Add(this.cbType);
-            this.Controls.Add(this.lblPublisher);
-            this.Controls.Add(this.lblYear);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.lblFirstName);
             this.Name = "ManageCitationForm";
             this.Text = "ManageCitationForm";
+            this.grpAuthors.ResumeLayout(false);
+            this.grpAuthors.PerformLayout();
+            this.grpDetails.ResumeLayout(false);
+            this.grpDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,16 +385,33 @@
         private System.Windows.Forms.TextBox tbPublisher;
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.TextBox tbTitle;
-        private System.Windows.Forms.TextBox tbLastName;
-        private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Label lblStyle;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.ComboBox cbStyle;
-        private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label lblPublisher;
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.TextBox tbJournal;
+        private System.Windows.Forms.Label lblJournal;
+        private System.Windows.Forms.Label lblDoi;
+        private System.Windows.Forms.TextBox tbDoi;
+        private System.Windows.Forms.Panel pnFirstName;
+        private System.Windows.Forms.Button btAddAuthor;
+        private System.Windows.Forms.Panel pnLastName;
+        private System.Windows.Forms.GroupBox grpAuthors;
+        private System.Windows.Forms.GroupBox grpDetails;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        protected System.Windows.Forms.ComboBox cbType;
     }
 }
