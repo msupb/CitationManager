@@ -16,6 +16,6 @@ namespace Data.Context
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<CitationContext, Data.Migrations.Configuration>());
         }
 
-        DbSet<CitationModel> Citations { get; set; }
+        DbSet<CitationModel> CitationsModels { get; set; }
     }
 }

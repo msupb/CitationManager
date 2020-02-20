@@ -1,22 +1,20 @@
 ﻿using Reference.Builder.Core.Citations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Data.Models
 {
     public class CitationModelMapper : ICitationModelMapper
     {
-        public CitationModel Map(Citation citation)
+        public CitationModel Map(Citation source)
         {
-            CitationModel model = new CitationModel();
-            model.CitationString = citation.ToString();
-            model.Style = citation.style;
-            model.Type = citation.type;
+            MapperConfiguration config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Citation, CitationModel>();
+            });
 
-            return model;
+            IMapper mapper = config.CreateMapper();
+            CitationModel destination = mapper.Map <Citation, CitationModel>(source);
+
+            return destination;
         }
     }
 }

@@ -38,7 +38,8 @@ namespace Reference.Builder.Core.Citations
             sb.Append($"({year}).{whiteSpace}");
             sb.Append($"{title}.{whiteSpace}");
             sb.Append($"{publisher.ToString()}.");
-            return sb.ToString();
+            CitationString = sb.ToString();
+            return CitationString;
         }
 
         private string InternalArticleCitation()
@@ -49,7 +50,8 @@ namespace Reference.Builder.Core.Citations
             sb.Append($"{title}.{whiteSpace}");
             sb.Append($"{journal}.{whiteSpace}");
             sb.Append($"doi:{whiteSpace}{doi}");
-            return sb.ToString();
+            CitationString = sb.ToString();
+            return CitationString;
         }
 
         private string FormatAuthorNames(List<Author> names)
@@ -78,7 +80,7 @@ namespace Reference.Builder.Core.Citations
 
         public override string ToString()
         {
-            return InternalCitationFactory(type);
+            return InternalCitationFactory(Type);
         }
     }
 }

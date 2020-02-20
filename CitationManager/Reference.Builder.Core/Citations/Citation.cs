@@ -15,8 +15,9 @@ namespace Reference.Builder.Core.Citations
         protected string year;
         protected List<Author> authors = new List<Author>();
         protected StringBuilder sb = new StringBuilder();
-        public CitationStyle style;
-        public CitationType type;
+        public CitationStyle Style;
+        public CitationType Type;
+        public string CitationString;
         protected const string whiteSpace = " ";
 
         public Citation(List<Author> authors, string title, string year, Publisher publisher, CitationStyle style, CitationType type)
@@ -24,8 +25,8 @@ namespace Reference.Builder.Core.Citations
             this.authors = authors;
             this.year = year;
             this.publisher = publisher;
-            this.style = style;
-            this.type = type;
+            this.Style = style;
+            this.Type = type;
             this.title = title;
         }
 
@@ -33,8 +34,8 @@ namespace Reference.Builder.Core.Citations
         {
             this.authors = authors;
             this.year = year;
-            this.style = style;
-            this.type = type;
+            this.Style = style;
+            this.Type = type;
             this.title = title;
             this.journal = journal;
             this.doi = doi;
@@ -44,7 +45,7 @@ namespace Reference.Builder.Core.Citations
 
         public override string ToString()
         {
-            return InternalCitationFactory(type);
+            return InternalCitationFactory(Type);
         }
     }
 }
