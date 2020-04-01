@@ -20,7 +20,7 @@ namespace GUI
         private readonly ICommandFactory commandFactory;
         private readonly CitationDetailsObject citationDetails;
         private readonly ICitationFactory citationFactory;
-        private List<Author> authors = new List<Author>();
+        private readonly List<Author> authors = new List<Author>();
 
         #endregion
 

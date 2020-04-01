@@ -9,6 +9,6 @@ namespace Reference.Builder.Core.Exporters
 {
     public interface IExporter
     {
-        bool Export(ListView itemList);
+        bool Export(ListView itemList, string fileName);
     }
 }

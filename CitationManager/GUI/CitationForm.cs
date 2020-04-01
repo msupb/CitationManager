@@ -85,10 +85,17 @@ namespace GUI
 
         private void Export(object sender, EventArgs e)
         {
-            if(xlsExporter.Export(lstCitations))
-                MessageBox.Show("Citation list successfully exported.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else 
-                MessageBox.Show("Something went wrong", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook| * .xls", ValidateNames = true })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    
+                    if (xlsExporter.Export(lstCitations, sfd.FileName))
+                        MessageBox.Show("Citation list successfully exported.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Something went wrong", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }          
         }
 
         #endregion
